@@ -8,16 +8,21 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.core.window import Window
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
-from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
+# from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 from datetime import datetime, date
 import json
 
 from database import ActivityDatabase
 from notifications import NotificationManager
 
-# Set window size for desktop testing
-Window.size = (400, 800)
+# Set window size for desktop testing (Paused now bc of ChatGPT)
+# Window.size = (400, 800)
+import os
+from kivy.core.window import Window
 
+if os.environ.get("KIVY_ENV") != "android":
+    Window.size = (400, 800)
+    
 class ActivityTrackerApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
