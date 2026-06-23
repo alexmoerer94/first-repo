@@ -6,11 +6,11 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
-from kivy.core.window import Window
+# from kivy.core.window import Window (ChatGPT suggestion)
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
 # from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 from datetime import datetime, date
-import json
+# import json (ChatGPT suggestion) 
 
 from database import ActivityDatabase
 from notifications import NotificationManager
@@ -311,6 +311,15 @@ class ActivityTrackerApp(App):
         """Log a new activity"""
         description = self.description_input.text.strip()
         notes = self.notes_input.text.strip()
+
+        # (ChatGPT suggestion)
+        #def refresh_ui(self):
+    #"""Refresh all tab contents"""
+    #self.root.tab_list[0].content = self.build_home_screen()
+    #self.root.tab_list[1].content = self.build_log_screen()
+    #self.root.tab_list[2].content = self.build_history_screen()
+    #self.root.tab_list[3].content = self.build_settings_screen()
+    # End Chat GPT suggestion
         
         if not description:
             self._show_popup('Error', 'Please describe your activity')
@@ -319,6 +328,14 @@ class ActivityTrackerApp(App):
         try:
             self.db.add_activity(description, self.current_category, notes)
             self._show_popup('Success', 'Activity logged successfully!')
+            #chatGPT suggestion
+            #def refresh_ui(self):
+    #"""Refresh all tab contents"""
+    #self.root.tab_list[0].content = self.build_home_screen()
+    #self.root.tab_list[1].content = self.build_log_screen()
+    #self.root.tab_list[2].content = self.build_history_screen()
+    #self.root.tab_list[3].content = self.build_settings_screen()
+    #end chatGPT suggestion
             self.description_input.text = ''
             self.notes_input.text = ''
             self.current_category = 'work'
@@ -329,6 +346,14 @@ class ActivityTrackerApp(App):
         """Delete an activity"""
         self.db.delete_activity(activity_id)
         self._show_popup('Success', 'Activity deleted')
+        def refresh_ui(self):
+            #chat GPT suggestion
+    #"""Refresh all tab contents"""
+    #self.root.tab_list[0].content = self.build_home_screen()
+    #self.root.tab_list[1].content = self.build_log_screen()
+    #self.root.tab_list[2].content = self.build_history_screen()
+    #self.root.tab_list[3].content = self.build_settings_screen()
+    #end chatGPT suggestion
         # Refresh history screen
         self.root.current_tab.content = self.build_history_screen()
 
@@ -353,6 +378,14 @@ class ActivityTrackerApp(App):
             self.db.clear_all_activities()
             popup.dismiss()
             self._show_popup('Success', 'All data cleared')
+            #chatGPT suggestion
+            #def refresh_ui(self):
+    #"""Refresh all tab contents"""
+    #self.root.tab_list[0].content = self.build_home_screen()
+    #self.root.tab_list[1].content = self.build_log_screen()
+    #self.root.tab_list[2].content = self.build_history_screen()
+    #self.root.tab_list[3].content = self.build_settings_screen()
+    #end chatGPT suggestion
         
         def cancel(instance):
             popup.dismiss()

@@ -16,6 +16,10 @@ class ActivityDatabase:
         """Initialize the database with required tables"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
+        #ChatGPT suggestion)
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_date ON activities(date)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_hour ON activities(hour)")
+        #end ChatGPT suggestion
         
         # Create activities table
         cursor.execute('''

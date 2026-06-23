@@ -8,12 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 
 version = 1.0.0
 
-requirements = python3,kivy,plyer,sqlite3,matplotlib
+requirements = python3,kivy,plyer,matplotlib
 
 orientation = portrait
 fullscreen = 0
-
-requirements=python3,kivy,sqlite3,plyer
-
-orientation=portrait
-fullscreen=0
